@@ -40,7 +40,14 @@ yesterday = now - datetime.timedelta(days=-1)
 # print(yesterday.strftime('%Y/%m/%d %H:%M:%S'))
 
 for i in range(100):
-    req = twitter.get(url, params=params)
+    req = twitter.get(
+        url='https://api.twitter.com/1.1/statuses/user_timeline.json',
+        params={
+            'count': 100,
+            'exclude_replies': True,
+            'include_rts': False
+        }
+    )
     if req.status_code == 200:
         timeline = json.loads(req.text)
         break
