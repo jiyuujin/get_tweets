@@ -40,7 +40,7 @@ yesterday = now - datetime.timedelta(days=-1)
 # print(yesterday.strftime('%Y/%m/%d %H:%M:%S'))
 
 for i in range(100):
-    req = twitter.get(url, params=params)
+    req = twitter.get(url=url, params=params)
     if req.status_code == 200:
         timeline = json.loads(req.text)
         break
